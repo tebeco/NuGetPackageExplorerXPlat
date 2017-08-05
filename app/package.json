@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "test",
-    "start": "electron"
+    "start": "electron",
+    "build": "electron-builder"
   },
   "keywords": [
     "nuget",
@@ -29,6 +30,7 @@
     "webpack": "^3.4.1"
   },
   "devDependencies": {
-    "electron": "^1.6.11"
+    "electron": "^1.6.11",
+    "electron-builder": "^19.19.1"
   }
 }

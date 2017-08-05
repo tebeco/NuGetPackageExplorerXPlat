@@ -57,3 +57,34 @@ app.on('activate', function () {
 })
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+const os = require('os');
+var apiProcess = null;
+
+function startApi() {
+  const spawnProc = require('child_process').spawn;
+  //  run server
+  const apiBinaryPath = path.join(__dirname, '..\\api\\src\\NugetPackageExplorerXPlat\\bin\\Debug\\netcoreapp2.0\\win10-x64\\publish\\NugetPackageExplorerXPlat.exe')
+  // if (os.platform() === 'darwin') {
+  //   apiBinaryPath = path.join(__dirname, '..//api//bin//dist//osx//Api')
+  // }
+
+  apiProcess = spawnProc(apiBinaryPath)
+
+  apiProcess.stdout.on('data', (data) => {
+    writeLog(`stdout: ${data}`);
+    if (mainWindow == null) {
+      createWindow();
+    }
+  });
+}
+
+// Kill process when electron exits
+process.on('exit', function () {
+  writeLog('exit');
+  apiProcess.kill();
+});
+
+function writeLog(msg){
+  console.log(msg);
+}
