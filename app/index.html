@@ -2,27 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Contacts App</title>
+    <title>Nuget Package Explorer XPlat</title>
 </head>
 <body>
-    <div class="container" ng-controller="ContactsCtrl as ctrl">
+    <div class="container">
         <h1>Title</h1>
-        <p style="color: red" ng-show="ctrl.ErrorMessage">ErrorMessage</p>
         <table >
             <thead>
                 <tr>
-                    <th style="min-width: 80px;">First name</th>
-                    <th style="min-width: 80px;">Last name</th>
+                    <th style="min-width: 80px;">Nuget</th>
+                    <th style="min-width: 80px;">Version</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="contact in ctrl.Contacts">
-                    <td>FirstName</td>
-                    <td>LastName</td>
+                <tr>
+                    <td>Paket.Core</td>
+                    <td>5.84.0</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </body>
-<script type="text/javascript" src="app/app.js"></script>
 </html>
