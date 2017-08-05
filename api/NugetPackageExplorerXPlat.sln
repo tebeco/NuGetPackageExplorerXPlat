@@ -5,11 +5,12 @@ VisualStudioVersion = 15.0.26730.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NugetPackageExplorerXPlat", "src\NugetPackageExplorerXPlat\NugetPackageExplorerXPlat.csproj", "{0B69DCDA-C7A2-4315-A6C7-F8D60C5FBBBA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8F7FB3D3-238F-47C7-9EC7-13FFA311F579}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7EA8BBE8-3BF2-4940-AE5D-21C953B97F2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetPackageExplorerXPlat.Tests", "tests\NugetPackageExplorerXPlat.Tests\NugetPackageExplorerXPlat.Tests.csproj", "{963A0388-23FE-4DB4-AC7E-1E556BD8FD1D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEAF717D-6CB5-4014-A047-FAD5E6E46BDE}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.config = NuGet.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,16 +22,9 @@ Global
 		{0B69DCDA-C7A2-4315-A6C7-F8D60C5FBBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B69DCDA-C7A2-4315-A6C7-F8D60C5FBBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B69DCDA-C7A2-4315-A6C7-F8D60C5FBBBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{963A0388-23FE-4DB4-AC7E-1E556BD8FD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{963A0388-23FE-4DB4-AC7E-1E556BD8FD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{963A0388-23FE-4DB4-AC7E-1E556BD8FD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{963A0388-23FE-4DB4-AC7E-1E556BD8FD1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{963A0388-23FE-4DB4-AC7E-1E556BD8FD1D} = {8F7FB3D3-238F-47C7-9EC7-13FFA311F579}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F88BB2F7-D76F-46AC-88E7-EE2685C2FB2B}
