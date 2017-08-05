@@ -37,7 +37,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', startApi)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -64,7 +64,7 @@ var apiProcess = null;
 function startApi() {
   const spawnProc = require('child_process').spawn;
   //  run server
-  const apiBinaryPath = path.join(__dirname, '..\\api\\src\\NugetPackageExplorerXPlat\\bin\\Debug\\netcoreapp2.0\\win10-x64\\publish\\NugetPackageExplorerXPlat.exe')
+  const apiBinaryPath = path.join(__dirname, '..\\api\\dist\\NugetPackageExplorerXPlat.exe')
   // if (os.platform() === 'darwin') {
   //   apiBinaryPath = path.join(__dirname, '..//api//bin//dist//osx//Api')
   // }

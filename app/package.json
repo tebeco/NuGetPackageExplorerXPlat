@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "test",
-    "start": "electron",
+    "start": "electron .",
     "build": "electron-builder"
   },
   "keywords": [
@@ -17,20 +17,31 @@
   "author": "TeBeCo",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^8.0.19",
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^15.5.2",
-    "@types/webpack": "^3.0.5",
-    "jest": "^20.0.4",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "ts-jest": "^20.0.7",
-    "ts-node": "^3.3.0",
-    "typescript": "^2.4.2",
-    "webpack": "^3.4.1"
   },
   "devDependencies": {
     "electron": "^1.6.11",
     "electron-builder": "^19.19.1"
+  },
+  "build": {
+    "appId": "cross-platform-desktop",
+    "directories": {
+      "buildResources": "../../assets",
+      "output": "../../dist"
+    },
+    "extraResources": {
+      "from": "../api/src/NugetPackageExplorerXPlat/bin/dist/",
+      "to": "api/bin/dist/",
+      "filter": [
+        "**/*"
+      ]
+    },
+    "mac": {
+      "category": "cross-platform-desktop"
+    },
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
   }
 }
