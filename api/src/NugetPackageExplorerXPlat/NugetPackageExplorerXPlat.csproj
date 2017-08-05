@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeIdentifiers>win10-x64;osx.10.11-x64</RuntimeIdentifiers>
     <UserSecretsId>aspnet-delete-7D180ED3-9735-454A-9A75-422B40ED5D2E</UserSecretsId>
   </PropertyGroup>
 
