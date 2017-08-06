@@ -4,8 +4,8 @@
   "description": "Nuget Package Explorer, based on Electron and .NetCore",
   "main": "main.js",
   "scripts": {
-    "test": "test",
     "start": "electron .",
+    "test": "test",
     "build": "electron-builder"
   },
   "keywords": [
@@ -16,21 +16,20 @@
   ],
   "author": "TeBeCo",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "electron": "^1.6.11",
-    "electron-builder": "^19.19.1"
+    "electron-builder": "^19.19.1",
+    "rimraf": "^2.6.1"
   },
   "build": {
     "appId": "cross-platform-desktop",
     "directories": {
-      "buildResources": "../../assets",
-      "output": "../../dist"
+      "output": "../dist"
     },
     "extraResources": {
-      "from": "../api/src/NugetPackageExplorerXPlat/bin/dist/",
-      "to": "api/bin/dist/",
+      "from": "../api/dist/",
+      "to": "../api/",
       "filter": [
         "**/*"
       ]
@@ -40,7 +39,7 @@
     },
     "win": {
       "target": [
-        "portable"
+        "NSIS"
       ]
     }
   }

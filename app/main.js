@@ -64,10 +64,10 @@ var apiProcess = null;
 function startApi() {
   const spawnProc = require('child_process').spawn;
   //  run server
-  const apiBinaryPath = path.join(__dirname, '..\\api\\dist\\NugetPackageExplorerXPlat.exe')
-  // if (os.platform() === 'darwin') {
-  //   apiBinaryPath = path.join(__dirname, '..//api//bin//dist//osx//Api')
-  // }
+  const apiBinaryPath = path.join(__dirname, 'api\\win\\NugetPackageExplorerXPlat.exe')
+  if (os.platform() === 'darwin') {
+    apiBinaryPath = path.join(__dirname, 'api\\osx\\NugetPackageExplorerXPlat')
+  }
 
   apiProcess = spawnProc(apiBinaryPath)
 
