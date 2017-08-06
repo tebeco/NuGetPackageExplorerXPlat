@@ -62,21 +62,26 @@ const os = require('os');
 var apiProcess = null;
 
 function startApi() {
-  const spawnProc = require('child_process').spawn;
-  //  run server
-  const apiBinaryPath = path.join(__dirname, 'api\\win\\NugetPackageExplorerXPlat.exe')
-  if (os.platform() === 'darwin') {
-    apiBinaryPath = path.join(__dirname, 'api\\osx\\NugetPackageExplorerXPlat')
+  // const spawnProc = require('child_process').spawn;
+  // //  run server
+  // const apiBinaryPath = path.join(__dirname, 'api\\win\\NugetPackageExplorerXPlat.exe')
+  // if (os.platform() === 'darwin') {
+  //   apiBinaryPath = path.join(__dirname, 'api\\osx\\NugetPackageExplorerXPlat')
+  // }
+
+  // apiProcess = spawnProc(apiBinaryPath)
+
+  // apiProcess.stdout.on('data', (data) => {
+  //   writeLog(`stdout: ${data}`);
+  //   if (mainWindow == null) {
+  //     createWindow();
+  //   }
+  // });
+
+  if (mainWindow == null) {
+    createWindow();
   }
 
-  apiProcess = spawnProc(apiBinaryPath)
-
-  apiProcess.stdout.on('data', (data) => {
-    writeLog(`stdout: ${data}`);
-    if (mainWindow == null) {
-      createWindow();
-    }
-  });
 }
 
 // Kill process when electron exits

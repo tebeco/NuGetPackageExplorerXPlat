@@ -2,12 +2,6 @@
   "name": "nuget-package-explorer-front",
   "version": "0.0.1",
   "description": "Nuget Package Explorer, based on Electron and .NetCore",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "test",
-    "build": "electron-builder"
-  },
   "keywords": [
     "nuget",
     "nuget package explorer",
@@ -16,7 +10,12 @@
   ],
   "author": "TeBeCo",
   "license": "MIT",
-  "dependencies": {},
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "test",
+    "build": "electron-builder --dir --win --x64"
+  },
   "devDependencies": {
     "electron": "^1.6.11",
     "electron-builder": "^19.19.1",
@@ -33,9 +32,6 @@
       "filter": [
         "**/*"
       ]
-    },
-    "mac": {
-      "category": "cross-platform-desktop"
     },
     "win": {
       "target": [
