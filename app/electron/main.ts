@@ -1,23 +1,20 @@
-const electron = require('electron')
-// Module to control application life.
-const app = electron.app
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
-
-const path = require('path')
-const url = require('url')
+import { app as electronApp, BrowserWindow } from 'electron';
+import { join } from 'path';
+import { format } from 'url';
+import { platform } from 'os';
+import { spawn, ChildProcess } from 'child_process';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow: Electron.BrowserWindow | null = null;
 
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+  // and load the index.html of the electronApp.
+  mainWindow.loadURL(format({
+    pathname: join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
@@ -37,18 +34,14 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', startApi)
+electronApp.on('ready', startApi)
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+electronApp.on('window-all-closed', function () {
+  electronApp.quit();
 })
 
-app.on('activate', function () {
+electronApp.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
@@ -58,40 +51,42 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-const os = require('os');
-var apiProcess = null;
+let apiProcess: ChildProcess | null = null;
 
 function startApi() {
-  // const spawnProc = require('child_process').spawn;
-  // //  run server
-  // const apiBinaryPath = path.join(__dirname, 'api\\win\\NugetPackageExplorerXPlat.exe')
-  // if (os.platform() === 'darwin') {
-  //   apiBinaryPath = path.join(__dirname, 'api\\osx\\NugetPackageExplorerXPlat')
-  // }
+  //  run server
+  const relativePath = platform() === 'darwin'
+    ? 'api\\osx\\NugetPackageExplorerXPlat'
+    : 'api\\win\\NugetPackageExplorerXPlat.exe';
+  const apiBinaryPath = join(__dirname, relativePath);
 
-  // apiProcess = spawnProc(apiBinaryPath)
+  console.log(__dirname);
+  console.log(apiBinaryPath);
 
-  // apiProcess.stdout.on('data', (data) => {
-  //   writeLog(`stdout: ${data}`);
-  //   if (mainWindow == null) {
-  //     createWindow();
-  //   }
-  // });
+  apiProcess = spawn(apiBinaryPath)
 
-  if (mainWindow == null) {
+  apiProcess.stdout.on('data', (data) => {
+    writeLog(`stdout: ${data}`);
+    if (mainWindow === null) {
+      createWindow();
+    }
+  });
+
+  if (mainWindow === null) {
     createWindow();
   }
-
 }
 
 // Kill process when electron exits
-process.on('exit', function () {
+// Typings are fucking bugged
+// process.on('exit', function () {
+(process as NodeJS.EventEmitter).on('exit', function () {
   writeLog('exit');
   if (apiProcess !== null) {
     apiProcess.kill();
   }
 });
 
-function writeLog(msg) {
+function writeLog(msg: string) {
   console.log(msg);
 }
