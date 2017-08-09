@@ -6,11 +6,12 @@ rm -rf api/dist
 
 CD api
 dotnet restore
-dotnet publish -r win10-x64 --output ..\..\app\win
+REM dotnet publish -r win10-x64 --output ..\..\dist\win
+dotnet publish -r win10-x64 --output ..\..\..\app\dist\api\win
 
 CD ..
 
 CD app
 
-CMD /C npm install
-CMD /C npm start
+REM CMD /C npm install
+CMD /C npm run start

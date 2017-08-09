@@ -10,7 +10,7 @@
   ],
   "author": "TeBeCo",
   "license": "MIT",
-  "main": "main.ts",
+  "main": "dist/main.js",
   "scripts": {
     "prestart": "npm run build",    
     "start": "electron ./dist/main.js",
