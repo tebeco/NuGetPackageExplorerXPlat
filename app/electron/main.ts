@@ -60,11 +60,7 @@ function startApi() {
     : 'api\\win\\NugetPackageExplorerXPlat.exe';
   const apiBinaryPath = join(__dirname, relativePath);
 
-  console.log(__dirname);
-  console.log(apiBinaryPath);
-
   apiProcess = spawn(apiBinaryPath)
-
   apiProcess.stdout.on('data', (data) => {
     writeLog(`stdout: ${data}`);
     if (mainWindow === null) {
